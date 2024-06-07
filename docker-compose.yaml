@@ -28,8 +28,8 @@ services:
     environment:
       - DB_URL=jdbc:postgresql://user-db:5432/user_db
       - EUREKA_URL=http://service-registry:8081/eureka
-      - DB_USERNAME=${USER_DB_USERNAME:root}
-      - DB_PASSWORD=${USER_DB_PASSWORD:password}
+      - DB_USERNAME={USER_DB_USERNAME:root}
+      - DB_PASSWORD={USER_DB_PASSWORD:password}
     build:
       context: user-service
       dockerfile: Dockerfile
@@ -44,8 +44,8 @@ services:
     container_name: user-db-con
     image: postgres
     environment:
-      - POSTGRES_USER=${USER_DB_USERNAME:root}
-      - POSTGRES_PASSWORD=${USER_DB_PASSWORD:password}
+      - POSTGRES_USER={USER_DB_USERNAME:root}
+      - POSTGRES_PASSWORD={USER_DB_PASSWORD:password}
       - POSTGRES_DB=user_db
     ports:
       - "5433:5432"
