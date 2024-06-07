@@ -1,0 +1,5 @@
+1) RabbitMQ to p2p messaging
+2) User, Card, Service microservices
+3) Docker to deploy
+4) PostgreSQL as DB
+

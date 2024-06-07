@@ -1,0 +1,55 @@
+version: "3.7"
+services:
+  service-registry:
+    container_name: service-registry-con
+    image: soliq_task/service_registry-img
+    build:
+      context: service-registry
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    restart: "no"
+
+  api-gateway:
+    container_name: api-gateway-con
+    image: soliq_task/api_gateway-img
+    build:
+      context: api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    depends_on:
+      - service-registry
+    restart: "no"
+
+  user-service:
+    container_name: user-service-con
+    image: soliq_task/user_service-img
+    environment:
+      - DB_URL=jdbc:postgresql://user-db:5432/user_db
+      - EUREKA_URL=http://service-registry:8081/eureka
+    build:
+      context: user-service
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    depends_on:
+      - api-gateway
+      - user-db
+    restart: "no"
+
+  user-db:
+    container_name: user-db-con
+    image: postgres
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=user_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - user-db-volume:/var/lib/postgresql/data
+    restart: "no"
+
+volumes:
+  user-db-volume:
