@@ -2,13 +2,13 @@ package soliq.task.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import soliq.task.model.entity.UserEntity;
+import soliq.task.model.entity.CardEntity;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, String> {
+public interface CardRepository extends JpaRepository<CardEntity, Long> {
     
-    Optional<UserEntity> findByPassportNumber(String passportNumber);
+    Optional<CardEntity> findByNumber(long number);
     
 }
