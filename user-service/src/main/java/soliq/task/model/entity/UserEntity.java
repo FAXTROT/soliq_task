@@ -1,14 +1,17 @@
 package soliq.task.model.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "client")
-public class ClientEntity {
+@Table(name = "user_acc")
+public class UserEntity {
     
     @Id
     @Column(name = "passport_number")

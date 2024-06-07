@@ -1,5 +1,5 @@
-CREATE TABLE IF NOT EXISTS client
+CREATE TABLE IF NOT EXISTS user_acc
 (
-    passport_number   VARCHAR(9) PRIMARY KEY,
-    full_name         VARCHAR(50)
+    passport_number VARCHAR(9) PRIMARY KEY,
+    full_name       VARCHAR(50)
 );

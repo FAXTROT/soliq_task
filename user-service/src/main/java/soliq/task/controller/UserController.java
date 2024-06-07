@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import soliq.task.service.ClientService;
+import soliq.task.service.UserService;
 
 @Slf4j
 @RestController
 @RequestMapping(value = "/api/v1/user")
 @RequiredArgsConstructor
-public class ClientController {
+public class UserController {
     
-    private final ClientService clientService;
+    private final UserService userService;
     
     @GetMapping(value = "/{passportNumber}")
-    public ResponseEntity readClient(@PathVariable("passportNumber") String passportNumber) {
-        return ResponseEntity.ok(clientService.getByPassportNumber(passportNumber));
+    public ResponseEntity readUser(@PathVariable("passportNumber") String passportNumber) {
+        return ResponseEntity.ok(userService.getByPassportNumber(passportNumber));
     }
     
 }
