@@ -1,6 +1,6 @@
 # Hot to run:
 
-### It uses Java 21 (LTS) version
+### It uses Java 21 (LTS) version and runs in Linux
 
 ## First compile all microservices:
 `./mvnw clean package` - run within each service (target/*.jar dir must appear in each service)
@@ -17,3 +17,16 @@
 
 # User service API:
 `[GET] http://localhost:8082/user/api/v1/user/{passportNumber}` - get user by passport number
+
+`http://localhost:8082/user/api/v1/user/DD1230987` - example
+
+
+# Card service API:
+`[POST] http://localhost:8082/card/api/v1/transfer`
+
+`{
+    "senderCardNumber": 8600123333333333,
+    "receiverCardNumber": 8600122222222222,
+    "amount": 100
+}` - example
+#### In Insomnia do not forget to set Header Content-Type: application/json

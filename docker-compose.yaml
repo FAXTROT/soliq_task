@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   service-registry:
     container_name: service-registry-con
@@ -26,10 +25,10 @@ services:
     container_name: user-service-con
     image: soliq_task/user_service-img
     environment:
-      - DB_URL=jdbc:postgresql://user-db:5432/user_db
-      - EUREKA_URL=http://service-registry:8081/eureka
-      - DB_USERNAME={USER_DB_USERNAME:root}
-      - DB_PASSWORD={USER_DB_PASSWORD:password}
+      DB_URL: jdbc:postgresql://user-db:5432/user_db
+      EUREKA_URL: http://service-registry:8081/eureka
+      DB_USERNAME: ${USER_DB_USERNAME:-root}
+      DB_PASSWORD: ${USER_DB_PASSWORD:-password}
     build:
       context: user-service
       dockerfile: Dockerfile
@@ -44,9 +43,9 @@ services:
     container_name: user-db-con
     image: postgres
     environment:
-      - POSTGRES_USER={USER_DB_USERNAME:root}
-      - POSTGRES_PASSWORD={USER_DB_PASSWORD:password}
-      - POSTGRES_DB=user_db
+      POSTGRES_USER: ${USER_DB_USERNAME:-root}
+      POSTGRES_PASSWORD: ${USER_DB_PASSWORD:-password}
+      POSTGRES_DB: user_db
     ports:
       - "5433:5432"
     volumes:
@@ -57,10 +56,10 @@ services:
     container_name: card-service-con
     image: soliq_task/card_service-img
     environment:
-      - DB_URL=jdbc:postgresql://card-db:5432/card_db
-      - EUREKA_URL=http://service-registry:8081/eureka
-      - DB_USERNAME={CARD_DB_USERNAME:root}
-      - DB_PASSWORD={CARD_DB_PASSWORD:password}
+      DB_URL: jdbc:postgresql://card-db:5432/card_db
+      EUREKA_URL: http://service-registry:8081/eureka
+      DB_USERNAME: ${CARD_DB_USERNAME:-root}
+      DB_PASSWORD: ${CARD_DB_PASSWORD:-password}
     build:
       context: card-service
       dockerfile: Dockerfile
@@ -75,9 +74,9 @@ services:
     container_name: card-db-con
     image: postgres
     environment:
-      - POSTGRES_USER={CARD_DB_USERNAME:root}
-      - POSTGRES_PASSWORD={CARD_DB_PASSWORD:password}
-      - POSTGRES_DB=card_db
+      POSTGRES_USER: ${CARD_DB_USERNAME:-root}
+      POSTGRES_PASSWORD: ${CARD_DB_PASSWORD:-password}
+      POSTGRES_DB: card_db
     ports:
       - "5434:5432"
     volumes:
