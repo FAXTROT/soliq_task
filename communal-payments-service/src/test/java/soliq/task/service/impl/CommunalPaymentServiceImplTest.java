@@ -28,10 +28,15 @@ class CommunalPaymentServiceImplTest {
     private CommunalPaymentServiceImpl communalPaymentService;
     
     private final String TITLE_OF_MOCK_COMMUNAL_SERVICE = "Gas";
+    
     private final String PASSPORT_OF_MOCK_USER = "AA1234567";
+    
     private final long BALANCE = 100L;
+    
     private final long POSITIVE_AMOUNT = 100L;
+    
     private final long NEGATIVE_AMOUNT = -234909L;
+    
     private final long ZERO_AMOUNT = 0L;
     
     @Test

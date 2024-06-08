@@ -22,6 +22,7 @@ public class CommunalPaymentServiceImpl implements CommunalPaymentService {
     @Transactional
     @Override
     public void topUp(String title, String userPassportNumber, long amount) {
+        
         if (amount == 0L) {
             throw new ZeroTransferAmountException("Amount to transfer is 0");
         } else if (amount < 0L) {
@@ -30,7 +31,7 @@ public class CommunalPaymentServiceImpl implements CommunalPaymentService {
         
         CommunalPaymentEntity user = communalPaymentRepository.findByTitleAndUserPassportNumber(title,
             userPassportNumber).orElseThrow(() -> new NotFoundException(
-                "User with such passport " + userPassportNumber + " and such service " + title + " not found"));
+            "User with such passport " + userPassportNumber + " and such service " + title + " not found"));
         
         long newBalance = user.getBalance() + amount;
         user.setBalance(newBalance);

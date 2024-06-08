@@ -19,6 +19,7 @@ public class CommunalPaymentEntityId implements Serializable {
     }
     
     public CommunalPaymentEntityId(String title, String userPassportNumber) {
+        
         this.title = title;
         this.userPassportNumber = userPassportNumber;
     }

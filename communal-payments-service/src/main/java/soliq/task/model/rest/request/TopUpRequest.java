@@ -4,8 +4,11 @@ import lombok.Data;
 
 @Data
 public class TopUpRequest {
+    
     private String title;
+    
     private String userPassportNumber;
+    
     private Long amount;
     
     public TopUpRequest(String title, String userPassportNumber, Long amount) {
@@ -15,4 +18,5 @@ public class TopUpRequest {
         this.amount = amount;
         
     }
+    
 }
