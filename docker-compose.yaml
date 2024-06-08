@@ -83,6 +83,38 @@ services:
       - card-db-volume:/var/lib/postgresql/data
     restart: "no"
 
+  communal-payments-service:
+    container_name: communal-payments-service-con
+    image: soliq_task/communal_payments_service-img
+    environment:
+      DB_URL: jdbc:postgresql://communal-payments-db:5432/communal_payments_db
+      EUREKA_URL: http://service-registry:8081/eureka
+      DB_USERNAME: ${COMMUNAL_SERVICES_DB_USERNAME:-root}
+      DB_PASSWORD: ${COMMUNAL_SERVICES_DB_PASSWORD:-password}
+    build:
+      context: communal-payments-service
+      dockerfile: Dockerfile
+    ports:
+      - "8085:8085"
+    depends_on:
+      - api-gateway
+      - communal-payments-db
+    restart: "no"
+
+  communal-payments-db:
+    container_name: communal-payments-db-con
+    image: postgres
+    environment:
+      POSTGRES_USER: ${COMMUNAL_SERVICES_DB_USERNAME:-root}
+      POSTGRES_PASSWORD: ${COMMUNAL_SERVICES_DB_PASSWORD:-password}
+      POSTGRES_DB: communal_payments_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - communal-payments-db-volume:/var/lib/postgresql/data
+    restart: "no"
+
 volumes:
   user-db-volume:
   card-db-volume:
+  communal-payments-db-volume:

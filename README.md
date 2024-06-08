@@ -29,9 +29,19 @@
 `[POST] http://localhost:8082/card/api/v1/transfer`
 
 `{
-"senderCardNumber": 8600123333333333,
-"receiverCardNumber": 8600122222222222,
-"amount": 100
+    "senderCardNumber": 8600123333333333,
+    "receiverCardNumber": 8600122222222222,
+    "amount": 100
+}` - example
+
+# Communal payments service API:
+
+`[POST] http://localhost:8082/communal/api/v1/topUp`
+
+`{
+    "title": "Water",
+    "userPassportNumber": "AA1234567",
+    "amount": 123
 }` - example
 
 #### In Insomnia do not forget to set Header Content-Type: application/json

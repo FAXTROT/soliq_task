@@ -3,6 +3,7 @@ package soliq.task.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import soliq.task.model.rest.request.TransferRequest;
 import soliq.task.model.rest.response.TransferResponse;
@@ -17,7 +18,7 @@ public class CardController {
     private final CardService cardService;
     
     @PostMapping(value = "/transfer", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String p2p(@RequestBody TransferRequest transferRequest) {
+    public ResponseEntity<TransferResponse> p2p(@RequestBody TransferRequest transferRequest) {
         
         TransferResponse transferResponse = new TransferResponse();
         try {
@@ -28,7 +29,7 @@ public class CardController {
             transferResponse.setStatus("FAILURE: " + e);
         }
         
-        return transferResponse.toString();
+        return ResponseEntity.ok(transferResponse);
         
     }
     
