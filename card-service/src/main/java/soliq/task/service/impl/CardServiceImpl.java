@@ -7,8 +7,6 @@ import soliq.task.model.entity.CardEntity;
 import soliq.task.repository.CardRepository;
 import soliq.task.service.CardService;
 
-import java.util.List;
-
 @Service
 public class CardServiceImpl implements CardService {
     

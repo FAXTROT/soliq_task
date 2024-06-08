@@ -25,7 +25,7 @@ public class CardEntity {
     @Column(name = "balance")
     private long balance;
     
-    public CardEntity(){
+    public CardEntity() {
         // default constructor
     }
     

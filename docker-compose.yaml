@@ -53,5 +53,37 @@ services:
       - user-db-volume:/var/lib/postgresql/data
     restart: "no"
 
+  card-service:
+    container_name: card-service-con
+    image: soliq_task/card_service-img
+    environment:
+      - DB_URL=jdbc:postgresql://card-db:5432/card_db
+      - EUREKA_URL=http://service-registry:8081/eureka
+      - DB_USERNAME={CARD_DB_USERNAME:root}
+      - DB_PASSWORD={CARD_DB_PASSWORD:password}
+    build:
+      context: card-service
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8084"
+    depends_on:
+      - api-gateway
+      - card-db
+    restart: "no"
+
+  card-db:
+    container_name: card-db-con
+    image: postgres
+    environment:
+      - POSTGRES_USER={CARD_DB_USERNAME:root}
+      - POSTGRES_PASSWORD={CARD_DB_PASSWORD:password}
+      - POSTGRES_DB=card_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - card-db-volume:/var/lib/postgresql/data
+    restart: "no"
+
 volumes:
   user-db-volume:
+  card-db-volume:
