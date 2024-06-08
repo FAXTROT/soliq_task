@@ -1,4 +1,4 @@
-### IntelliJ IDEA ###
+## IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
@@ -6,3 +6,5 @@
 
 ### Secrets ###
 .env
+
+*.bkp
