@@ -12,14 +12,17 @@ import soliq.task.service.UserService;
 public class UserServiceImpl implements UserService {
     
     private UserMapper userMapper = new UserMapper();
+    
     private final UserRepository userRepository;
     
     public UserServiceImpl(UserRepository userRepository) {
+        
         this.userRepository = userRepository;
     }
     
     @Override
     public UserDTO getByPassportNumber(String passportNumber) {
+        
         UserEntity userEntity = userRepository.findByPassportNumber(passportNumber)
             .orElseThrow(() -> new EntityNotFoundException("User with passport " + passportNumber + " not found"));
         return userMapper.convertToDto(userEntity);

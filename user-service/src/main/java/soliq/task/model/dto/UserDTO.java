@@ -6,6 +6,7 @@ import lombok.Data;
 public class UserDTO {
     
     private String passportNumber;
+    
     private String fullName;
     
 }

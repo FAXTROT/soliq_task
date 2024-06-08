@@ -8,6 +8,7 @@ public class UserMapper extends BaseMapper<UserEntity, UserDTO> {
     
     @Override
     public UserEntity convertToEntity(UserDTO dto, Object... args) {
+        
         UserEntity entity = new UserEntity();
         if (dto != null) {
             BeanUtils.copyProperties(dto, entity);
@@ -17,6 +18,7 @@ public class UserMapper extends BaseMapper<UserEntity, UserDTO> {
     
     @Override
     public UserDTO convertToDto(UserEntity entity, Object... args) {
+        
         UserDTO userDTO = new UserDTO();
         if (entity != null) {
             BeanUtils.copyProperties(entity, userDTO);

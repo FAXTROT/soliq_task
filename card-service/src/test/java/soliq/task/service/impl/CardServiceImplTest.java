@@ -30,14 +30,19 @@ class CardServiceImplTest {
     private CardServiceImpl cardService;
     
     private final long ZERO_BALANCE_CARD_NUMBER = 8600123456781234L;
+    
     private final long LOW_BALANCE_CARD_NUMBER = 8600111456781234L;
+    
     private final long BIG_BALANCE_CARD_NUMBER = 8600111456781554L;
     
     private final long ZERO_BALANCE_CARD_BALANCE = 0L;
+    
     private final long LOW_BALANCE_CARD_BALANCE = 110L;
+    
     private final long BIG_BALANCE_CARD_BALANCE = 57495437985L;
     
     private final long POSITIVE_AMOUNT = 234909L;
+    
     private final long NEGATIVE_AMOUNT = -234909L;
     
     @Test

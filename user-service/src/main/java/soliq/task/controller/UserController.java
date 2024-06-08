@@ -19,6 +19,7 @@ public class UserController {
     
     @GetMapping(value = "/{passportNumber}")
     public ResponseEntity readUser(@PathVariable("passportNumber") String passportNumber) {
+        
         return ResponseEntity.ok(userService.getByPassportNumber(passportNumber));
     }
     

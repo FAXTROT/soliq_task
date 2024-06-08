@@ -8,6 +8,7 @@ public class CardMapper extends BaseMapper<CardEntity, CardDTO> {
     
     @Override
     public CardEntity convertToEntity(CardDTO dto, Object... args) {
+        
         CardEntity entity = new CardEntity();
         if (dto != null) {
             BeanUtils.copyProperties(dto, entity);
@@ -17,6 +18,7 @@ public class CardMapper extends BaseMapper<CardEntity, CardDTO> {
     
     @Override
     public CardDTO convertToDto(CardEntity entity, Object... args) {
+        
         CardDTO CardDTO = new CardDTO();
         if (entity != null) {
             BeanUtils.copyProperties(entity, CardDTO);

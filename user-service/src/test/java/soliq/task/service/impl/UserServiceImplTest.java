@@ -25,11 +25,14 @@ class UserServiceImplTest {
     private UserServiceImpl userService;
     
     private String EXISTING_CLIENT_PASSPORT_NUMBER_1 = "DD1230987";
+    
     private String EXISTING_CLIENT_FULL_NAME_1 = "Test Full Name";
+    
     private String NOT_EXISTING_CLIENT_PASSPORT_NUMBER = "DD1110987";
     
     @Test
     void GetByPassportNumber_WhenExists_ShouldGiveUserDTO() {
+        
         UserEntity userEntity = new UserEntity();
         userEntity.setPassportNumber(EXISTING_CLIENT_PASSPORT_NUMBER_1);
         userEntity.setFullName(EXISTING_CLIENT_FULL_NAME_1);
@@ -42,6 +45,7 @@ class UserServiceImplTest {
     
     @Test
     void GetByPassportNumber_WhenNotExists_ShouldThrowException() {
+        
         assertThrows(EntityNotFoundException.class,
             () -> {
                 userService.getByPassportNumber(NOT_EXISTING_CLIENT_PASSPORT_NUMBER);

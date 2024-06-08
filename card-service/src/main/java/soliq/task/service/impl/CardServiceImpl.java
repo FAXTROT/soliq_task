@@ -13,6 +13,7 @@ public class CardServiceImpl implements CardService {
     private final CardRepository cardRepository;
     
     public CardServiceImpl(CardRepository cardRepository) {
+        
         this.cardRepository = cardRepository;
     }
     

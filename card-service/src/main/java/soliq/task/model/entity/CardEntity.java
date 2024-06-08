@@ -30,6 +30,7 @@ public class CardEntity {
     }
     
     public CardEntity(long number, String holdersPassportNumber, long balance) {
+        
         this.number = number;
         this.holdersPassportNumber = holdersPassportNumber;
         this.balance = balance;
